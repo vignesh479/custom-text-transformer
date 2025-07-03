@@ -1,0 +1,64 @@
+{
+	"name": "custom-text-transformer",
+	"displayName": "Custom Text Transformer",
+	"description": "Advanced text transformer",
+	"publisher": "VigneshS",
+	"version": "0.1.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vignesh479/custom-text-transformer.git"
+	},
+	"engines": {
+		"vscode": "^1.68.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:custom-text-transformer.selectAndTransform"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "Custom Text Transformer",
+			"properties": {
+				"custom-text-transformer.executor": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "Specifies the path to js file to require when evaluating inline, check docs for more info."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "custom-text-transformer.selectAndTransform",
+				"title": "CustomTransformer: Select custom task and transform"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "custom-text-transformer.selectAndTransform",
+				"key": "ctrl+alt+h",
+				"mac": "shift+cmd+h",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^18.19.115",
+		"@types/vscode": "^1.68.1",
+		"@vscode/test-electron": "^2.1.5",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"vm2": "^3.9.19"
+	}
+}
